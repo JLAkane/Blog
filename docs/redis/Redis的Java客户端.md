@@ -1,7 +1,9 @@
 ## Jedis
-Jedis的官网地址：https://github.com/redis/jedis
+
+Jedis 的官网地址：https://github.com/redis/jedis
 
 引入依赖：
+
 ```xml
 <dependency>
     <groupId>redis.clients</groupId>
@@ -11,6 +13,7 @@ Jedis的官网地址：https://github.com/redis/jedis
 ```
 
 建立连接
+
 ```Java
 private Jedis jedis;
 
@@ -25,7 +28,7 @@ void setUp(){
 }
 ```
 
-测试String
+测试 String
 
 ```Java
 @Test
@@ -47,8 +50,9 @@ void tearDown(){
 }
 ```
 
-## Jedis连接池
-Jedis本身是线程不安全的，并且频繁的创建和销毁连接会有性能损耗，因此用jedis连接池代替jedis的直连方式
+## Jedis 连接池
+
+Jedis 本身是线程不安全的，并且频繁的创建和销毁连接会有性能损耗，因此用 jedis 连接池代替 jedis 的直连方式
 
 ```Java
 public class JedisConnectionFactory{
@@ -73,26 +77,25 @@ public class JedisConnectionFactory{
 }
 ```
 
-
 ## SpringDataRedis
-SpringData是Spring中数据操作的模块，包含对各种数据库的集成，其中对Redis的集成模块就叫做SpringDataRedis，官网地址：https://spring.io/projects/spring-data-redis
 
-- 提供了对不同Redis客户端的整合（Lettuce和Jedis）
-- 提供了RedisTemplate统一API来操作Redis
-- 支持Redis的发布订阅模型
-- 支持Redis哨兵和Redis集群
-- 支持基于Lettuce的响应式编程
-- 支持基于JDK、JSON、字符串、Spring对象的数据序列化及反序列化
-- 支持基于Redis的JDKCollection实现
+SpringData 是 Spring 中数据操作的模块，包含对各种数据库的集成，其中对 Redis 的集成模块就叫做 SpringDataRedis，官网地址：https://spring.io/projects/spring-data-redis
 
+- 提供了对不同 Redis 客户端的整合（Lettuce 和 Jedis）
+- 提供了 RedisTemplate 统一 API 来操作 Redis
+- 支持 Redis 的发布订阅模型
+- 支持 Redis 哨兵和 Redis 集群
+- 支持基于 Lettuce 的响应式编程
+- 支持基于 JDK、JSON、字符串、Spring 对象的数据序列化及反序列化
+- 支持基于 Redis 的 JDKCollection 实现
 
+SpringDataRedis 中提供了 RedisTemplate 工具类，其中封装了各种对 Redis 的操作。并且将不同数据类型的操作 API 封装到了不同的类型中：
+![](../src/asset/redis/UFlNIV0.png)
 
-SpringDataRedis中提供了RedisTemplate工具类，其中封装了各种对Redis的操作。并且将不同数据类型的操作API封装到了不同的类型中：
-![](./images/UFlNIV0.png)
+## SpringDataRedis 快速入门
 
-
-## SpringDataRedis快速入门
 1、引入依赖
+
 ```xml
 <!--Redis依赖-->
 <dependency>
@@ -105,7 +108,9 @@ SpringDataRedis中提供了RedisTemplate工具类，其中封装了各种对Redi
     <artifactId>commons-pool2</artifactId>
 </dependency>
 ```
+
 2、配置文件
+
 ```yaml
 spring:
   redis:
@@ -119,18 +124,22 @@ spring:
         min-idle: 0
         max-wait: 100ms
 ```
-3、注入RedisTemplate
+
+3、注入 RedisTemplate
+
 ```java
 @Autowired
 private RedisTemplate redisTemplate;
 ```
+
 4、编写测试
+
 ```java
 @SpringBootTest
 public class RedisTest{
     @Autowired
     private RedisTemplate redisTemplate;
-    
+
     @Test
     void testString(){
         //插入一条string类型数据
@@ -144,30 +153,22 @@ public class RedisTest{
 ```
 
 ## 自定义序列化
-RedisTemplate可以接收任意Object作为值写入Redis：
 
-![](./images/OEMcbuu.png)
+RedisTemplate 可以接收任意 Object 作为值写入 Redis：
 
+![](../src/asset/redis/OEMcbuu.png)
 
+只不过写入前会把 Object 序列化为字节形式，默认是采用 JDK 序列化，得到的结果是这样的：
 
-
-
-只不过写入前会把Object序列化为字节形式，默认是采用JDK序列化，得到的结果是这样的：
-
-![](./images/5FjtWk5.png)
-
-
+![](../src/asset/redis/5FjtWk5.png)
 
 缺点：
 
 - 可读性差
 - 内存占用较大
 
+我们可以自定义 RedisTemplate 的序列化方式，代码如下：
 
-
-
-
-我们可以自定义RedisTemplate的序列化方式，代码如下：
 ```java
 @Configuration
 public class RedisConfig {
@@ -179,7 +180,7 @@ public class RedisConfig {
         // 设置连接工厂
         template.setConnectionFactory(connectionFactory);
         // 创建JSON序列化工具
-        GenericJackson2JsonRedisSerializer jsonRedisSerializer = 
+        GenericJackson2JsonRedisSerializer jsonRedisSerializer =
             							new GenericJackson2JsonRedisSerializer();
         // 设置Key的序列化
         template.setKeySerializer(RedisSerializer.string());
@@ -192,29 +193,26 @@ public class RedisConfig {
     }
 }
 ```
-这里采用了JSON序列化来代替默认的JDK序列化方式。最终结果如图：
 
-![](./images/XOAq3cN.png)
+这里采用了 JSON 序列化来代替默认的 JDK 序列化方式。最终结果如图：
 
-整体可读性有了很大提升，并且能将Java对象自动的序列化为JSON字符串，并且查询时能自动把JSON反序列化为Java对象。不过，其中记录了序列化时对应的class名称，目的是为了查询时实现自动反序列化。这会带来额外的内存开销。
+![](../src/asset/redis/XOAq3cN.png)
+
+整体可读性有了很大提升，并且能将 Java 对象自动的序列化为 JSON 字符串，并且查询时能自动把 JSON 反序列化为 Java 对象。不过，其中记录了序列化时对应的 class 名称，目的是为了查询时实现自动反序列化。这会带来额外的内存开销。
 
 ## StringRedisTemplate
 
-为了节省内存空间，我们可以不使用JSON序列化器来处理value，而是统一使用String序列化器，要求只能存储String类型的key和value。当需要存储Java对象时，手动完成对象的序列化和反序列化。
+为了节省内存空间，我们可以不使用 JSON 序列化器来处理 value，而是统一使用 String 序列化器，要求只能存储 String 类型的 key 和 value。当需要存储 Java 对象时，手动完成对象的序列化和反序列化。
 
-![](./images/Ip9TKSY.png)
+![](../src/asset/redis/Ip9TKSY.png)
 
-因为存入和读取时的序列化及反序列化都是我们自己实现的，SpringDataRedis就不会将class信息写入Redis了。
+因为存入和读取时的序列化及反序列化都是我们自己实现的，SpringDataRedis 就不会将 class 信息写入 Redis 了。
 
+这种用法比较普遍，因此 SpringDataRedis 就提供了 RedisTemplate 的子类：StringRedisTemplate，它的 key 和 value 的序列化方式默认就是 String 方式。
 
+![](../src/asset/redis/zXH6Qn6.png)
 
-这种用法比较普遍，因此SpringDataRedis就提供了RedisTemplate的子类：StringRedisTemplate，它的key和value的序列化方式默认就是String方式。
-
-![](./images/zXH6Qn6.png)
-
-
-
-省去了我们自定义RedisTemplate的序列化方式的步骤，而是直接使用：
+省去了我们自定义 RedisTemplate 的序列化方式的步骤，而是直接使用：
 
 ```java
 @Autowired
@@ -239,6 +237,3 @@ void testSaveUser() throws JsonProcessingException {
 }
 
 ```
-
-
-

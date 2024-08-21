@@ -30,7 +30,7 @@
 - `docker logs`：查看容器运行日志
 
 用一副图来表示这些命令的关系：
-![图片加载失败](../../src/asset/whiteboard_exported_image.png)
+![图片加载失败](/docker/whiteboard_exported_image.png)
 
 补充：
 默认情况下，每次重启虚拟机我们都需要手动启动 Docker 和 Docker 中的容器。通过命令可以实现开机自启：
@@ -56,7 +56,7 @@ docker update --restart=always [容器名/容器id]
 > **数据卷（volume）**是一个虚拟目录，是**容器内目录**与**宿主机目录**之间映射的桥梁。
 
 如图所示其中的关系：
-![图片加载失败](../../src/asset/image.png)
+![图片加载失败](/docker/image.png)
 
 在上图中：
 
@@ -122,7 +122,7 @@ docker update --restart=always [容器名/容器id]
 
 但需要注意的是，镜像文件不是随意堆放的，而是按照操作的步骤分层叠加而成，每一层形成的文件都会单独打包并标记一个唯一 id，称为 Layer（层）。这样，如果我们构建时用到的某些层其他人已经制作过，就可以直接拷贝使用这些层，而不用重复制作。<br>
 下图可展示一个镜像的结构：
-![](../../src/asset/output.png)
+![](/docker/output.png)
 
 由于制作镜像的过程中，需要逐层处理和打包，比较复杂，所以 Docker 就提供了自动打包镜像的功能。我们只需要将打包的过程，每一层要做的事情用固定的语法写下来，交给 Docker 去执行即可。
 而这种记录镜像结构的文件就称为**Dockerfile**，其对应的语法可以参考官方文档：

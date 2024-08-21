@@ -90,7 +90,7 @@ SpringData 是 Spring 中数据操作的模块，包含对各种数据库的集�
 - 支持基于 Redis 的 JDKCollection 实现
 
 SpringDataRedis 中提供了 RedisTemplate 工具类，其中封装了各种对 Redis 的操作。并且将不同数据类型的操作 API 封装到了不同的类型中：
-![](../src/asset/redis/UFlNIV0.png)
+![](/redis/UFlNIV0.png)
 
 ## SpringDataRedis 快速入门
 
@@ -156,11 +156,11 @@ public class RedisTest{
 
 RedisTemplate 可以接收任意 Object 作为值写入 Redis：
 
-![](../src/asset/redis/OEMcbuu.png)
+![](/redis/OEMcbuu.png)
 
 只不过写入前会把 Object 序列化为字节形式，默认是采用 JDK 序列化，得到的结果是这样的：
 
-![](../src/asset/redis/5FjtWk5.png)
+![](/redis/5FjtWk5.png)
 
 缺点：
 
@@ -196,7 +196,7 @@ public class RedisConfig {
 
 这里采用了 JSON 序列化来代替默认的 JDK 序列化方式。最终结果如图：
 
-![](../src/asset/redis/XOAq3cN.png)
+![](/redis/XOAq3cN.png)
 
 整体可读性有了很大提升，并且能将 Java 对象自动的序列化为 JSON 字符串，并且查询时能自动把 JSON 反序列化为 Java 对象。不过，其中记录了序列化时对应的 class 名称，目的是为了查询时实现自动反序列化。这会带来额外的内存开销。
 
@@ -204,13 +204,13 @@ public class RedisConfig {
 
 为了节省内存空间，我们可以不使用 JSON 序列化器来处理 value，而是统一使用 String 序列化器，要求只能存储 String 类型的 key 和 value。当需要存储 Java 对象时，手动完成对象的序列化和反序列化。
 
-![](../src/asset/redis/Ip9TKSY.png)
+![](/redis/Ip9TKSY.png)
 
 因为存入和读取时的序列化及反序列化都是我们自己实现的，SpringDataRedis 就不会将 class 信息写入 Redis 了。
 
 这种用法比较普遍，因此 SpringDataRedis 就提供了 RedisTemplate 的子类：StringRedisTemplate，它的 key 和 value 的序列化方式默认就是 String 方式。
 
-![](../src/asset/redis/zXH6Qn6.png)
+![](/redis/zXH6Qn6.png)
 
 省去了我们自定义 RedisTemplate 的序列化方式的步骤，而是直接使用：
 

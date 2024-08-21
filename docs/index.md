@@ -8,7 +8,7 @@ hero:
   actions:
     - theme: brand
       text: 开始学习
-      link: /markdown-examples
+      link: /navigation
     - theme: alt
       text: github
       link: https://github.com/JLAkane/Blog

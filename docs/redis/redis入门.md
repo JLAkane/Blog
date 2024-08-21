@@ -64,10 +64,10 @@ String 结构是将对象序列化为 JSON 字符串后存储，当需要修改�
 | test:user:1 |' {name:"test1",age:"22"} '|
 | test:user:2 |' {name:"test1",age:"22"} '|
 
-![](../src/asset/redis/x2zDBjf.png)
+![](/redis/x2zDBjf.png)
 
 Hash 结构可以将对象中的每个字段独立存储，可以针对单个字段做 CRUD
-![](../src/asset/redis/VF2EPt0.png)
+![](/redis/VF2EPt0.png)
 
 Hash 的常见命令有：
 
@@ -129,13 +129,13 @@ Set 的常见命令有：
 
 例如两个集合：s1 和 s2:
 
-![](../src/asset/redis/ha8x86R.png)
+![](/redis/ha8x86R.png)
 
 求交集：SINTER s1 s2
 
 求 s1 与 s2 的不同：SDIFF s1 s2
 
-![](../src/asset/redis/L9vTv2X.png)
+![](/redis/L9vTv2X.png)
 
 ## SortedSet 类型
 

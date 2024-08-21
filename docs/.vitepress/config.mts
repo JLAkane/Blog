@@ -1,6 +1,7 @@
-import { Content, defineConfig } from "vitepress";
+import { defineConfig } from "vitepress";
+import nav from "./nav.mts";
+import sidebar from "./sidebar.mts";
 
-// https://vitepress.dev/reference/site-config
 export default defineConfig({
   lang: "zh-CN",
 
@@ -13,34 +14,16 @@ export default defineConfig({
    */
   head: [],
 
-  base: "/Blog",
+  base: "/Blog/",
 
   cleanUrls: true,
 
   themeConfig: {
+    siteTitle: "学习笔记",
     // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      // { text: "Home", link: "/" },
-      // { text: "Examples", link: "/markdown-examples" },
-      {
-        text: "Tools",
-        items: [{ text: "Docker", link: "/tools/docker/docker入门" }],
-      },
-    ],
+    nav: nav,
 
-    sidebar: [
-      {
-        text: "Examples",
-        items: [
-          { text: "Markdown Examples", link: "/markdown-examples" },
-          { text: "Runtime API Examples", link: "/api-examples" },
-        ],
-      },
-      {
-        text: "Docker Study",
-        link: "/tools/docker/docker入门",
-      },
-    ],
+    sidebar: sidebar,
 
     socialLinks: [{ icon: "github", link: "https://github.com/JLAkane/Blog" }],
 

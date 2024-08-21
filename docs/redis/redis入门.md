@@ -61,8 +61,8 @@ Hash 类型，也叫散列，其 value 是一个无序字典，类似于 Java �
 String 结构是将对象序列化为 JSON 字符串后存储，当需要修改对象的某个字段时很不方便
 | KEY | VALUE |
 |:-------:|:-------:|
-| test:user:1 | {name:"test1",age:"22"} |
-| test:user:2 | {name:"test1",age:"22"} |
+| test:user:1 |' {name:"test1",age:"22"} '|
+| test:user:2 |' {name:"test1",age:"22"} '|
 
 ![](../src/asset/redis/x2zDBjf.png)
 

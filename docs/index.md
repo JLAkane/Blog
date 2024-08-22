@@ -1,6 +1,5 @@
 ---
 layout: home
-
 hero:
   name: "学习笔记"
   text: "Akane's 个人博客"
@@ -19,4 +18,8 @@ features:
     details: 书山有路勤为径，学海无涯苦作舟
   - title: 《 劝学诗 》
     details: 书中自有黄金屋,书中自有颜如玉
+
+blog:
 ---
+
+<Home/>

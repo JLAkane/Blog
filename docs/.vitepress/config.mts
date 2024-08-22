@@ -3,7 +3,7 @@ import nav from "./nav.mts";
 import sidebar from "./sidebar.mts";
 
 export default defineConfig({
-  lang: "zh-CN",
+  lang: "en-US",
 
   titleTemplate: ":title | Akane的个人博客",
 
@@ -24,6 +24,8 @@ export default defineConfig({
     nav: nav,
 
     sidebar: sidebar,
+
+    outlineTitle: "页面导航",
 
     socialLinks: [{ icon: "github", link: "https://github.com/JLAkane/Blog" }],
 

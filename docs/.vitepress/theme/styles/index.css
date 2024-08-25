@@ -1,4 +1,7 @@
 .VPHome {
+/*    部署到GitHub page的配置
+   background-image: url("/Blog/109139299_p0_master1200.jpg"); 
+   /* 部署到自定义域名配置 */
   background-image: url("/Blog/109139299_p0_master1200.jpg");
   background-size: cover;
   background-repeat: no-repeat;

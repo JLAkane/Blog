@@ -14,7 +14,7 @@ export default defineConfig({
    */
   head: [],
 
-  base: "/Blog/",
+  // base: "/Blog/",
 
   cleanUrls: true,
 

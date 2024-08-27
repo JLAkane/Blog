@@ -1,5 +1,5 @@
 .VPHome {
-/*    部署到GitHub page的配置
+  /*    部署到GitHub page的配置
    background-image: url("/Blog/109139299_p0_master1200.jpg"); 
    /* 部署到自定义域名配置 */
   background-image: url("/109139299_p0_master1200.jpg");
@@ -8,16 +8,4 @@
   background-position: center center;
   height: 100vh;
   margin-bottom: 0 !important; /* 使用 !important 来确保覆盖 */
-}
-.VPNav {
-  opacity: 0.6;
-}
-
-.VPNav:hover {
-  background-color: white;
-  opacity: 0.8;
-}
-
-.container[data-v-cf6e7c5e] {
-  max-width: 95%;
 }

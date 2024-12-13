@@ -5,7 +5,16 @@
   background-image: url("/109139299_p0_master1200.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: center;
   height: 100vh;
-  margin-bottom: 0 !important; /* 使用 !important 来确保覆盖 */
+  margin-bottom: 0px !important;
+}
+.main[data-v-72cc4481] {
+  color: aliceblue;
+}
+:root {
+  --vp-home-hero-name-color: aliceblue;
+}
+.tagline[data-v-72cc4481] {
+  color: aliceblue;
 }

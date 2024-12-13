@@ -7,7 +7,7 @@ hero:
   actions:
     - theme: brand
       text: 开始学习
-      link: /navigation
+      link: /tools/docker/docker入门
     - theme: alt
       text: github
       link: https://github.com/JLAkane/Blog
@@ -18,8 +18,4 @@ features:
     details: 书山有路勤为径，学海无涯苦作舟
   - title: 《 劝学诗 》
     details: 书中自有黄金屋,书中自有颜如玉
-
-blog:
 ---
-
-<Home/>

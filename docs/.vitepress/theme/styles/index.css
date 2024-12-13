@@ -9,12 +9,12 @@
   height: 100vh;
   margin-bottom: 0px !important;
 }
-.main[data-v-72cc4481] {
+.main {
   color: aliceblue;
 }
 :root {
   --vp-home-hero-name-color: aliceblue;
 }
-.tagline[data-v-72cc4481] {
-  color: aliceblue;
+.tagline {
+  color: aliceblue !important;
 }
